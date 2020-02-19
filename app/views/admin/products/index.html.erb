@@ -15,6 +15,7 @@
           <p class="title is-4"><%= product.name %></p>
           <span>原價：<%= number_to_currency(product.list_price, precision: 0) %></span>
           <span>售價：<%= number_to_currency(product.sale_price, precision: 0) %></span>
+          <span><%= product.state %></span>
         </div>
       </div>
       <div class="content">

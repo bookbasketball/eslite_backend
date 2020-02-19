@@ -38,6 +38,11 @@
       <%= form.text_field :description, class: 'input' %>
     </div>
   </div>
+  <%= form.label :description, '商品狀態' %>
+    <div class="control">
+      <%= form.select :state, options_for_select(["進貨中", "已上架", "已下架"]), class: 'form-control' %>
+    </div>
+  </div>
   <div class="field">
     <%= form.submit '儲存商品', class: 'btn btn-block btn-blue1 btn-save' %>
   </div>
