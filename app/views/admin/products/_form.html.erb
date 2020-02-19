@@ -1,0 +1,43 @@
+<% if product.errors.any? %>
+  <ul>
+    <% product.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: Product.new do |form| %>
+  <div class="field">
+    <%= form.label :name, '商品名稱' %>
+    <div class="control">
+      <%= form.text_field :name, class: 'input' %>
+    </div>
+  </div>
+  <div class="field">
+    <%= form.label :list_price, '商品原價' %>
+    <div class="control">
+      <%= form.text_field :list_price, class: 'input' %>
+    </div>
+  </div>
+  <div class="field">
+    <%= form.label :sale_price, '商品售價' %>
+    <div class="control">
+      <%= form.text_field :sale_price, class: 'input' %>
+    </div>
+  </div>
+  <div class="field">
+    <%= form.label :sku, '商品庫存' %>
+    <div class="control">
+      <%= form.text_field :sku, class: 'input' %>
+    </div>
+  </div>
+  <div class="field">
+  <%= form.label :description, '商品說明' %>
+    <div class="control">
+      <%= form.text_field :description, class: 'input' %>
+    </div>
+  </div>
+  <div class="field">
+    <%= form.submit '儲存商品', class: 'btn btn-block btn-blue1 btn-save' %>
+  </div>
+<% end %>
