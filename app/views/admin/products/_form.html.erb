@@ -6,7 +6,8 @@
   </ul>
 <% end %>
 
-<%= form_with model: Product.new do |form| %>
+<%= form_with model: [:admin, product], local: true do |form| %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
   <div class="field">
     <%= form.label :name, '商品名稱' %>
     <div class="control">

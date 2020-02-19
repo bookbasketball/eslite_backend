@@ -16,6 +16,7 @@ gem 'devise', '~> 4.2'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'foreman', '~> 0.86.0'
+  gem 'hirb-unicode', '~> 0.0.5'
 end
 
 group :development do
