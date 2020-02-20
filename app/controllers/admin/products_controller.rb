@@ -48,7 +48,7 @@ class Admin::ProductsController < ApplicationController
   private
   
   def find_product
-    @product = Product.find(params[:id])
+    @product = current_user.products.with_attached_images.find(params[:id])
   end
   
   def product_params

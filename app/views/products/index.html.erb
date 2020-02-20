@@ -1,22 +1,20 @@
-<% @products.each do |product| %>
-  <div class="box">
-    <article class="media">
-      <div class="media-left">
-        <figure class="image is-500x500">
-          <% if product.images.attached? %>
-            <%= image_tag product.images.first %>
-          <% else %>
-            <img src="https://fakeimg.pl/300x300/">
-          <% end %>
-        </figure>
-      </div>
-      <div class="media-content">
-        <div class="content">
-          <p class="title is-4"><%= product.name %></p>
-          <span>原價：<%= number_to_currency(product.list_price, precision: 0) %></span>
-          <span>售價：<%= number_to_currency(product.sale_price, precision: 0) %></span>
+<div class="container">
+  <% @products.each do |product| %>
+    <div class="box">
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-500x500">
+            <%= image_tag product.images.first.variant(resize_to_limit: [100, 100]) %>
+          </figure>
         </div>
-      </div>
-    </article>
-  </div>
-<% end %>
+        <div class="media-content">
+          <div class="content">
+            <p class="title is-4"><%= product.name %></p>
+            <span>原價：<%= number_to_currency(product.list_price, precision: 0) %></span>
+            <span>售價：<%= number_to_currency(product.sale_price, precision: 0) %></span>
+          </div>
+        </div>
+      </article>
+    </div>
+  <% end %>
+</div>

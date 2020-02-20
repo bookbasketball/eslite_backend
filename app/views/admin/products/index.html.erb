@@ -1,28 +1,30 @@
-<%= link_to "新增商品", new_admin_product_path, class: 'button is-primary is-middle' %>
+<div class="container">  
+  <%= link_to "新增商品", new_admin_product_path, class: 'button is-primary is-middle' %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">商品名稱</th>
-      <th scope="col">商品原價</th>
-      <th scope="col">商品售價</th>
-      <th scope="col">商品狀態</th>
-      <th scope="col">商品圖片</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @products.each do |product| %>
+  <table class="table">
+    <thead>
       <tr>
-          <td><%= product.name %></td>
-          <td><%= product.list_price %></td>
-          <td><%= product.sale_price %></td>
-          <td><%= product.state %></td>
-          <td><%= link_to "點擊瀏覽", admin_product_path(product), class: 'button is-light is-small' %></td>
-          <td><%= link_to "編輯", edit_admin_product_path(product), class: 'button is-light is-small' %></td>
-          <td><%= link_to '刪除', admin_product_path(product), method: 'delete', data: {confirm: '您確定要刪除？'}, class: 'button is-light is-small' %></td>
+        <th scope="col">商品名稱</th>
+        <th scope="col">商品原價</th>
+        <th scope="col">商品售價</th>
+        <th scope="col">商品狀態</th>
+        <th scope="col">商品圖片</th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+            <td><%= product.name %></td>
+            <td><%= product.list_price %></td>
+            <td><%= product.sale_price %></td>
+            <td><%= product.state %></td>
+            <td><%= link_to "點擊瀏覽", admin_product_path(product), class: 'button is-light is-small' %></td>
+            <td><%= link_to "編輯", edit_admin_product_path(product), class: 'button is-light is-small' %></td>
+            <td><%= link_to '刪除', admin_product_path(product), method: 'delete', data: {confirm: '您確定要刪除？'}, class: 'button is-light is-small' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

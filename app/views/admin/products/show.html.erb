@@ -1,12 +1,16 @@
-<div class="box">
-  <article class="media">
-    <figure class="image">
-      <% @product.images.each do |image| %>
-        <div class="column">
-          <%= image_tag image.variant(resize: "100x100") %>
-        </div>
-        <%= link_to '刪除', destroy_image_admin_product_path(@product, image), method: :delete %>
-      <% end %>
-    </figure>
-  </article>
+<div class="container">
+  <div class="box">
+    <article class="media">
+      <figure class="image">
+        <% @product.images.each do |image| %>
+          <div class="row">
+            <%= image_tag image.variant(resize_to_limit: [500, 500]) %>
+          </div>
+          <div class="column">
+            <%= link_to '刪除', destroy_image_admin_product_path(@product, image), method: :delete, class: 'button is-danger' %>
+          </div>
+        <% end %>
+      </figure>
+    </article>
+  </div>
 </div>

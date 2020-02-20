@@ -6,48 +6,54 @@
   </ul>
 <% end %>
 
-<%= form_with model: [:admin, product], local: true do |form| %>
-  <%= form.hidden_field :user_id, value: current_user.id %>
-  <div class="field">
-    <%= form.label :images, '商品圖片' %>
-    <%= form.file_field :images, multiple: true, accept: 'image/jpg,image/png,image/gif', class: 'input' %>
-  </div>
-  <div class="field">
-    <%= form.label :name, '商品名稱' %>
-    <div class="control">
-      <%= form.text_field :name, class: 'input' %>
+<div class="container">
+  <%= form_with model: [:admin, product], local: true do |form| %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <div class="field">
+      <%= form.label :images, '商品圖片', class: 'lable' %>
+      <div class="control">
+        <%= form.file_field :images, multiple: true, accept: "image/jpeg,image/png", class: 'input' %>
+      </div>
     </div>
-  </div>
-  <div class="field">
-    <%= form.label :list_price, '商品原價' %>
-    <div class="control">
-      <%= form.text_field :list_price, class: 'input' %>
+    <div class="field">
+      <%= form.label :name, '商品名稱' %>
+      <div class="control">
+        <%= form.text_field :name, class: 'input' %>
+      </div>
     </div>
-  </div>
-  <div class="field">
-    <%= form.label :sale_price, '商品售價' %>
-    <div class="control">
-      <%= form.text_field :sale_price, class: 'input' %>
+    <div class="field">
+      <%= form.label :list_price, '商品原價' %>
+      <div class="control">
+        <%= form.text_field :list_price, class: 'input' %>
+      </div>
     </div>
-  </div>
-  <div class="field">
-    <%= form.label :sku, '商品庫存' %>
-    <div class="control">
-      <%= form.text_field :sku, class: 'input' %>
+    <div class="field">
+      <%= form.label :sale_price, '商品售價' %>
+      <div class="control">
+        <%= form.text_field :sale_price, class: 'input' %>
+      </div>
     </div>
-  </div>
-  <div class="field">
-  <%= form.label :description, '商品說明' %>
-    <div class="control">
-      <%= form.text_field :description, class: 'input' %>
+    <div class="field">
+      <%= form.label :sku, '商品庫存' %>
+      <div class="control">
+        <%= form.text_field :sku, class: 'input' %>
+      </div>
     </div>
-  </div>
-  <%= form.label :description, '商品狀態' %>
-    <div class="control">
-      <%= form.select(:state, [['已上架', 'for_sale'],['已下架', 'not_for_sale'],['補貨中', 'purchasing']], {}) %>
+    <div class="field">
+    <%= form.label :description, '商品說明' %>
+      <div class="control">
+        <%= form.text_field :description, class: 'input' %>
+      </div>
     </div>
-  </div>
-  <div class="field">
-    <%= form.submit '儲存商品', class: 'btn btn-block btn-blue1 btn-save' %>
-  </div>
-<% end %>
+    <div class="field">
+    <%= form.label :description, '商品狀態' %>
+      <div class="control">
+        <%= form.select(:state, [['已上架', 'for_sale'],['已下架', 'not_for_sale'],['補貨中', 'purchasing']], {}) %>
+      </div>
+    </div>
+    </div>
+    <div class="field">
+      <%= form.submit '儲存商品', class: 'button is-link' %>
+    </div>
+  <% end %>
+</div>
