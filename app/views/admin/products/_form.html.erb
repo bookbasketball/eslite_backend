@@ -9,6 +9,10 @@
 <%= form_with model: [:admin, product], local: true do |form| %>
   <%= form.hidden_field :user_id, value: current_user.id %>
   <div class="field">
+    <%= form.label :images, '商品圖片' %>
+    <%= form.file_field :images, multiple: true, accept: 'image/jpg,image/png,image/gif', class: 'input' %>
+  </div>
+  <div class="field">
     <%= form.label :name, '商品名稱' %>
     <div class="control">
       <%= form.text_field :name, class: 'input' %>
@@ -40,7 +44,7 @@
   </div>
   <%= form.label :description, '商品狀態' %>
     <div class="control">
-      <%= form.select :state, options_for_select(["進貨中", "已上架", "已下架"]), class: 'form-control' %>
+      <%= form.select(:state, [['上架', 'for_sale'],['下架', 'not_for_sale'],['補貨中', 'purchasing']], {}) %>
     </div>
   </div>
   <div class="field">

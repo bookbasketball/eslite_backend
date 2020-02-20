@@ -2,28 +2,31 @@
 
 <%= link_to "新增商品", new_admin_product_path, class: 'button is-primary is-middle' %>
 
-<% @products.each do |product| %>
-  <div class="card">
-    <div class="card-image">
-      <figure class="image is-4by3">
-        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-      </figure>
-    </div>
-    <div class="card-content">
-      <div class="media">
-        <div class="media-content">
-          <p class="title is-4"><%= product.name %></p>
-          <span>原價：<%= number_to_currency(product.list_price, precision: 0) %></span>
-          <span>售價：<%= number_to_currency(product.sale_price, precision: 0) %></span>
-          <span><%= product.state %></span>
-        </div>
-      </div>
-      <div class="content">
-        <%= product.description %>
-        <hr>
-        <%= link_to "編輯", edit_admin_product_path(product), class: 'button is-light is-small' %>
-        <%= link_to '刪除', admin_product_path(product), method: 'delete', data: {confirm: '您確定要刪除？'}, class: 'button is-light is-small' %>
-      </div>
-    </div>
-  </div>
-<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">商品名稱</th>
+      <th scope="col">商品原價</th>
+      <th scope="col">商品售價</th>
+      <th scope="col">商品狀態</th>
+      <th scope="col">商品圖片</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <li>
+          <td><%= product.name %></td>
+          <td><%= product.list_price %></td>
+          <td><%= product.sale_price %></td>
+          <td><%= product.state %></td>
+          <td><%= link_to "點擊瀏覽", admin_product_path(product), class: 'button is-light is-small' %></td>
+          <td><%= link_to "編輯", edit_admin_product_path(product), class: 'button is-light is-small' %></td>
+          <td><%= link_to '刪除', admin_product_path(product), method: 'delete', data: {confirm: '您確定要刪除？'}, class: 'button is-light is-small' %></td>
+        </li>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

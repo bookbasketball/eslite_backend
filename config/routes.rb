@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'products#index' 
-    resources :products
+    resources :products do
+      delete '/images/:image_id' => 'products#destroy_image', as: :destroy_image, on: :member
+    end
   end
 end
