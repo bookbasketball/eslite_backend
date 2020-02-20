@@ -1,0 +1,7 @@
+zh-TW:
+  enum:
+    product:
+      state:
+        for_sale: "已上架"
+        not_for_sale: "已下架"
+        purchasing: "進貨中"

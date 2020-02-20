@@ -1,28 +1,22 @@
-<h1 class="title">商品清單</h1>
-
-<%= link_to "新增商品", new_admin_product_path, class: 'button is-primary is-middle' %>
-
 <% @products.each do |product| %>
-  <div class="card">
-    <div class="card-image">
-      <figure class="image is-4by3">
-        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-      </figure>
-    </div>
-    <div class="card-content">
-      <div class="media">
-        <div class="media-content">
+  <div class="box">
+    <article class="media">
+      <div class="media-left">
+        <figure class="image is-500x500">
+          <% if product.images.attached? %>
+            <%= image_tag product.images.first %>
+          <% else %>
+            <img src="https://fakeimg.pl/300x300/">
+          <% end %>
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
           <p class="title is-4"><%= product.name %></p>
-          <span>原價：<%= number_to_currency(@product.list_price, precision: 0) %></span>
-          <span>售價：<%= number_to_currency(@product.sale_price, precision: 0) %></span>
+          <span>原價：<%= number_to_currency(product.list_price, precision: 0) %></span>
+          <span>售價：<%= number_to_currency(product.sale_price, precision: 0) %></span>
         </div>
       </div>
-      <div class="content">
-        <%= product.description %>
-        <hr>
-        <%= link_to "編輯", edit_admin_product_path(product), class: 'button is-light is-small' %>
-        <%= link_to '消除', admin_product_path(product), method: 'delete', data: {confirm: '您確定是否刪除?'}, class: 'button is-light is-small' %>
-      </div>
-    </div>
+    </article>
   </div>
 <% end %>
